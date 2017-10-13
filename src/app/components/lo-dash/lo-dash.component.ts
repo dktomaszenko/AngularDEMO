@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-lo-dash',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoDashComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    console.log('lodash version:', _.VERSION);
   }
 
 }
