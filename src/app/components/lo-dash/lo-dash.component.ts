@@ -12,6 +12,8 @@ export class LoDashComponent implements OnInit {
     this.iteratingOverCollections();
     this.sortingData();
     this.SearchingForData();
+    this.findingItemsInCollections();
+    this.slicingCollectionsIntoSmallerPieces();
   }
 
   ngOnInit() {
@@ -74,7 +76,7 @@ export class LoDashComponent implements OnInit {
       'Luigi',
       'Otto'
     ];
-    const name: string = 'Luke';
+    const name = 'Luke';
     collection2.splice(_.sortedIndex(collection2, name), 0, name);
 
     console.log(collection2);
@@ -104,9 +106,60 @@ export class LoDashComponent implements OnInit {
     console.log('***********  Ejemplo 7 ***************');
 
     console.log(_.filter(collection2, (item) => {
-        return item.size === 'L' || item.size === 'M';
+      return item.size === 'L' || item.size === 'M';
     }));
 
+
+    const collection3 = [
+      {name: 'Ryan', enabled: true},
+      {name: 'Megan', enabled: false},
+      {name: 'Trevor', enabled: false},
+      {name: 'Patricia', enabled: true}
+    ];
+
+    console.log('***********  Ejemplo 8 ***************');
+
+    console.log(_.reject(collection3, {enabled: false}));
+
+
+  }
+
+  findingItemsInCollections() {
+    const collection = [
+      {name: 'Derek', age: 37},
+      {name: 'Caroline', age: 35},
+      {name: 'Malcolm', age: 37},
+      {name: 'Hazel', age: 62}
+    ];
+
+    console.log('***********  Ejemplo 9 ***************');
+
+    console.log(_.find(collection, {age: 37}));
+
+    console.log('***********  Ejemplo 10 ***************');
+
+    console.log(_.findLast(collection, {age: 37}));
+
+  }
+
+  slicingCollectionsIntoSmallerPieces() {
+    const array = [
+      'Steve',
+      'Michelle',
+      'Rebecca',
+      'Alan'
+    ];
+
+    _.take(array, 2);
+
+    // → [ "Steve", "Michelle" ]
+
+    _.take('lodash', 2).join('');
+
+    // → "lo"
+
+    _.takeRight(array, 2);
+    _.takeRight('lodash', 4).join('');
 
   }
 
